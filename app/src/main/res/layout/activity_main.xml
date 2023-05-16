@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_Set_Track_Goals"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/green_button"
+        android:text="Track and Set Goals"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:onClick="gotoTrackAndSetGoals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Your_Budgets" />
+
+    <Button
+        android:id="@+id/btn_Income_Expense"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/green_button"
+        android:onClick="gotoIncomeAndExpense"
+        android:text="Income and Expenses"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Your_Spendings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_Your_Spendings"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <Button
+        android:id="@+id/btn_Your_Budgets"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/green_button"
+        android:text="Your Budget"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:onClick="gotoYourBudgets"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Set_Track_Goals"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_Set_Track_Goals"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Your_Spendings" />
+
+    <Button
+        android:id="@+id/btn_Your_Spendings"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/green_button"
+        android:text="Your Spendings"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:onClick="gotoYourSpendings"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Your_Budgets"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_Your_Budgets"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Income_Expense" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkgreen"
+            android:minHeight="?attr/actionBarSize"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="DhanLabh"
+            app:titleMargin="4dp"
+            app:titleTextColor="#F3EEEE" />
+    </com.google.android.material.appbar.AppBarLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
