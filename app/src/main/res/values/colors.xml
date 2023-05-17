@@ -6,4 +6,5 @@
     <color name="darkgreen">#00897B</color>
     <color name="background">#87C9B1</color>
     <color name="btnColour">#59852A</color>
+    <color name="layout_background">#87C9B1</color>
 </resources>

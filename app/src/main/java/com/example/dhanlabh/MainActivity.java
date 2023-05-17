@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void gotoIncomeAndExpense(View view){ // directing to 2nd activity for Income and Expence
         Intent intent = new Intent(this, MainActivity2.class);
-        intent.putExtra(INTENT_STRING, "Income and Expences");
+        intent.putExtra(INTENT_STRING, "Expenses and History");
         startActivity(intent);
     }
     public void gotoYourSpendings(View view){   // directing to 2nd activity for Spendings
