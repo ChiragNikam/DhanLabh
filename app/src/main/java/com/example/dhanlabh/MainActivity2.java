@@ -5,12 +5,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.Objects;
 
 public class MainActivity2 extends AppCompatActivity {
     Toolbar toolbar;
+    ListView lstView;
+    String[] category = {"Grocery", "Travel", "Bills", "School Fees", "College Fees"};
+    int[] amount = {100, 200, 300, 5000, 30};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +29,8 @@ public class MainActivity2 extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24);
         }
         toolbar.setTitle(toolbarTitle);
+        ExpensesHistoryLayout expensesHistoryLayout = new ExpensesHistoryLayout(this, R.layout.expenses_history_layout, category, amount);
+        lstView = findViewById(R.id.expense_entrys);
+        lstView.setAdapter(expensesHistoryLayout);
     }
 }

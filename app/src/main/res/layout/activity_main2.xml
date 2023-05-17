@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".MainActivity2">
+    tools:context=".MainActivity2"
+    android:orientation="horizontal">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,5 +17,15 @@
         android:layout_height="wrap_content"
         android:background="@color/darkgreen"
         app:titleTextColor="@color/white" />
+
+        <ListView
+            android:id="@+id/expense_entrys"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#AFDFB9"
+            android:padding="17dp"
+            android:divider="@null"
+            android:dividerHeight="10dp"/>
     </com.google.android.material.appbar.AppBarLayout>
+
 </LinearLayout>
