@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DhanLabh</string>
     <string name="budget_analysis_string">Budget Analysis</string>
+    <string name="add_entry">Add Entry</string>
 </resources>

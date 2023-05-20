@@ -1,22 +1,14 @@
 package com.example.dhanlabh;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
     public static final String INTENT_STRING = "com.example.dhanlabh.sending_intent";
-    public String[] contents_of_list_view = {"Income and Expenses", "Transaction History", "Budget Analysis", "Goal Tracker"};
-    public ListView lstOptions;
-    public Button btnGoToSecond;
+//    public String[] contents_of_list_view = {"Income and Expenses", "Transaction History", "Budget Analysis", "Goal Tracker"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
