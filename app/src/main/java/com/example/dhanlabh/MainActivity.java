@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     public static final String INTENT_STRING = "com.example.dhanlabh.sending_intent";
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this, "at on Create", Toast.LENGTH_SHORT).show();
     }
     public void gotoIncomeAndExpense(View view){ // directing to 2nd activity for Income and Expence
         Intent intent = new Intent(this, MainActivity2.class);
