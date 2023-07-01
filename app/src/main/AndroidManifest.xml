@@ -13,15 +13,7 @@
         android:theme="@style/Theme.DhanLabh"
         tools:targetApi="31">
         <activity
-            android:name=".ExpenseEntry"
-            android:exported="false"
-            android:parentActivityName=".MainActivity2"/>
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".MainActivity"
+            android:name=".Activity1_Main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,9 +3,8 @@ package com.example.dhanlabh;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.dhanlabh.R;
 
-public class Activity2_Expence_Entries extends AppCompatActivity {
+public class Activity2_Expense_Entries extends AppCompatActivity {
     Toolbar toolbar2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
