@@ -1,0 +1,41 @@
+package com.example.dhanlabh;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+
+public class ExpensesHistoryLayout extends ArrayAdapter<String> {
+    public ArrayList<String> category;
+    public ArrayList<Integer> amount;
+    public ExpensesHistoryLayout(@NonNull Context context, int resource, @NonNull ArrayList<String> category, @NonNull ArrayList<Integer> amount){
+        super(context, resource, category);
+        this.category = category;
+        this.amount = amount;
+    }
+    @Nullable
+    public String getCategory(int position){
+        return category.get(position);
+    }
+    public int getAmount(int position){
+        return amount.get(position);
+    }
+
+    @Nullable
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_expenses_history, parent, false);
+        TextView txt = convertView.findViewById(R.id.txtCategory);
+        TextView txt1 = convertView.findViewById(R.id.txtAmount);
+        txt1.setText(txt1.getText().toString() + getAmount(position));
+        txt.setText(txt.getText().toString() + getCategory(position));
+        return convertView;
+    }
+}

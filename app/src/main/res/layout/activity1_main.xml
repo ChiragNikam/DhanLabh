@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".MainActivity">
+    android:background="#87C9B1"
+    tools:context=".Activity1_Main">
 
     <Button
         android:id="@+id/btn_Set_Track_Goals"
@@ -16,20 +16,19 @@
         android:text="Track and Set Goals"
         android:textColor="@color/white"
         android:textStyle="bold|italic"
-        android:onClick="gotoTrackAndSetGoals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_Your_Budgets" />
 
     <Button
-        android:id="@+id/btn_Income_Expense"
+        android:id="@+id/btn_Expenses_History"
         android:layout_width="360dp"
         android:layout_height="70dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/green_button"
-        android:onClick="gotoIncomeAndExpense"
-        android:text="Income and Expenses"
+        android:onClick="gotoExpenseEntries"
+        android:text="Expenses and History"
         android:textColor="@color/white"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="@+id/btn_Your_Spendings"
@@ -46,7 +45,6 @@
         android:text="Your Budget"
         android:textColor="@color/white"
         android:textStyle="bold|italic"
-        android:onClick="gotoYourBudgets"
         app:layout_constraintEnd_toEndOf="@+id/btn_Set_Track_Goals"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_Set_Track_Goals"
@@ -61,11 +59,10 @@
         android:text="Your Spendings"
         android:textColor="@color/white"
         android:textStyle="bold|italic"
-        android:onClick="gotoYourSpendings"
         app:layout_constraintEnd_toEndOf="@+id/btn_Your_Budgets"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_Your_Budgets"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Income_Expense" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Expenses_History" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
