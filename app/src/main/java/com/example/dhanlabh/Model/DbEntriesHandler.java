@@ -8,11 +8,13 @@ package com.example.dhanlabh.Model;
 public class DbEntriesHandler {
     private int id;
     private String exp_type;
-    private int exp_amount;
+    private double exp_amount;
+    private String exp_date;
 
-    public DbEntriesHandler(String exp_type, int exp_amount) {
+    public DbEntriesHandler(String exp_type, int exp_amount, String exp_date) {
         this.exp_type = exp_type;
         this.exp_amount = exp_amount;
+        this.exp_date = exp_date;
     }
 
     public DbEntriesHandler(int id, String exp_type, int exp_amount) {
@@ -39,11 +41,15 @@ public class DbEntriesHandler {
         this.exp_type = exp_type;
     }
 
-    public int getExp_amount() {
+    public double getExp_amount() {
         return exp_amount;
     }
 
-    public void setExp_amount(int exp_amount) {
+    public void setExp_amount(double exp_amount) {
         this.exp_amount = exp_amount;
     }
+
+    public String getExp_date() { return exp_date; }
+
+    public void setExp_date(String exp_date) { this.exp_date = exp_date; }
 }

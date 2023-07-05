@@ -7,7 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Activity0_Splash_Activity extends AppCompatActivity{
-    private static final long SPLASH_SCREEN_DELAY = 3000; // Delay in milliseconds
+    private static final long SPLASH_SCREEN_DELAY = 1500; // Delay in milliseconds
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class Activity0_Splash_Activity extends AppCompatActivity{
             new Handler().postDelayed(() -> {
                 Intent intent = new Intent(Activity0_Splash_Activity.this, Activity1_Main.class);
                 startActivity(intent);
-                finish();
+                finish();   // this will close splash activity so that on clicking back button while on home activity it should not again go to splash activity
             }, SPLASH_SCREEN_DELAY);
         }
 }

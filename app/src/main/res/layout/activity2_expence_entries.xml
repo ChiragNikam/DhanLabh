@@ -17,7 +17,7 @@
         android:layout_margin="16dp"
         android:layout_marginStart="355dp"
         android:layout_marginTop="675dp"
-        android:onClick="startExpenseEntry"
+        android:onClick="startExpenseEntries"
         android:contentDescription="@string/add_entry"
         app:srcCompat="@android:drawable/ic_input_add" />
 
