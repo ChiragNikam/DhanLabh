@@ -23,7 +23,7 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         }
 
     }
-
+    // getting bug here
     public void startExpenseEntries(View view){
         Intent intent = new Intent(this, Activity2_1_Input_Expense_Entries.class);
         startActivity(intent);
