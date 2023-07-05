@@ -13,7 +13,7 @@ public class Activity1_Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity1_main);
     }
-    public void gotoExpenseEntries(View view){ // directing to 2nd activity for Income and Expence
+    public void gotoExpenseEntries(View view){ // directing to 2nd activity for Income and Expense
         Intent intent = new Intent(this, Activity2_Expense_Entries.class);
         startActivity(intent);
     }

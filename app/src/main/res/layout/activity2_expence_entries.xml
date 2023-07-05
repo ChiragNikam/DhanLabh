@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activity2_Expense_Entries">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_expence_entry"
@@ -19,9 +19,7 @@
         android:layout_marginTop="675dp"
         android:onClick="startExpenseEntry"
         android:contentDescription="@string/add_entry"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="355dp" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -32,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/darkgreen"
+        app:title="Expenses and History"
         app:titleTextColor="@color/white" />
 
         <ListView

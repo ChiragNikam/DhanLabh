@@ -18,8 +18,7 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24);  // back button on toolbar
         }
-        toolbar2.setTitle("Expenses and History"); // this will set title to Action Bar which will be intent coming from activity1
-    }
 
+    }
 
 }
