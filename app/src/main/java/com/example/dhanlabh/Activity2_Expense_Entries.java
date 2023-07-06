@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Activity2_Expense_Entries extends AppCompatActivity {
+
     Toolbar toolbar2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,20 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24);  // back button on toolbar
         }
-
     }
-    // getting bug here
+
     public void startExpenseEntries(View view){
         Intent intent = new Intent(this, Activity2_1_Input_Expense_Entries.class);
         startActivity(intent);
+    }
+
+    @Override   // bug_fix
+    public void onBackPressed() {   // solution for bug - 16c12da
+        // Start Activity1_Main when back button is pressed
+        Intent intent = new Intent(this, Activity1_Main.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Clear the activity stack
+        startActivity(intent);
+        finish(); // Finish the current activity
     }
 
 }

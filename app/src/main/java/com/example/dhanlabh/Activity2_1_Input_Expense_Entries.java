@@ -56,6 +56,5 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Exception Occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
     }
 }

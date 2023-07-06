@@ -33,16 +33,14 @@
         app:title="Expenses and History"
         app:titleTextColor="@color/white" />
 
-        <ListView
-            android:id="@+id/expense_entrys"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#AFDFB9"
-            android:padding="17dp"
-            android:divider="@null"
-            android:dividerHeight="10dp">
-
-        </ListView>
+            android:padding="8dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:background="@color/background"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 </RelativeLayout>
