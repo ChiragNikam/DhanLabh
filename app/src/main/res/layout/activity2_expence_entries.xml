@@ -9,7 +9,7 @@
     tools:context=".Activity2_Expense_Entries">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add_expence_entry"
+        android:id="@+id/btn_add_expense_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -34,13 +34,14 @@
         app:titleTextColor="@color/white" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp"
+            android:paddingLeft="16dp"
             android:clipToPadding="false"
             android:scrollbars="vertical"
-            android:background="@color/background"/>
+            android:background="@color/background" />
     </com.google.android.material.appbar.AppBarLayout>
 
 </RelativeLayout>

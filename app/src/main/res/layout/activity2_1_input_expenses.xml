@@ -93,7 +93,6 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@drawable/green_button"
-        android:onClick="onAdd"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_cancel"
         app:layout_constraintStart_toStartOf="parent" />
 

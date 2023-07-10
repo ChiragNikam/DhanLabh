@@ -32,10 +32,12 @@ public class ExpensesHistoryLayout extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_expenses_history, parent, false);
-        TextView txt = convertView.findViewById(R.id.txtCategory);
-        TextView txt1 = convertView.findViewById(R.id.txtAmount);
-        txt1.setText(txt1.getText().toString() + getAmount(position));
-        txt.setText(txt.getText().toString() + getCategory(position));
+        TextView txt_category = convertView.findViewById(R.id.txtCategory);
+        TextView txt_amount = convertView.findViewById(R.id.txtAmount);
+        String for_amount = txt_amount.getText().toString() + getAmount(position);
+        txt_amount.setText(for_amount);
+        String for_category = txt_category.getText().toString() + getCategory(position);
+        txt_category.setText(for_category);
         return convertView;
     }
 }

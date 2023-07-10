@@ -15,6 +15,7 @@ import com.example.dhanlabh.Model.DbEntriesHandler;
 import com.example.dhanlabh.Parameters.DbParameters;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DbHandler extends SQLiteOpenHelper {
@@ -80,7 +81,10 @@ public class DbHandler extends SQLiteOpenHelper {
             }while(cursor.moveToNext());
         }
 
+        cursor.close();
         db.close();
+
+        Collections.reverse(expense_table); // to reverse list, so that the latest added entry should get at top of the recycler view
 
         return expense_table;
 

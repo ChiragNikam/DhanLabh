@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.dhanlabh.Data.DbHandler;
@@ -14,14 +14,26 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
-
+    Button btn_add, btn_cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2_1_input_expenses);
+
+        // Action over ADD button
+        btn_add = findViewById(R.id.btn_add_to_Database);
+        btn_add.setOnClickListener(view -> onAdd());
+
+        // Action over CANCEL button
+        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_cancel.setOnClickListener(view -> {
+            Intent goBack = new Intent(Activity2_1_Input_Expense_Entries.this, Activity2_Expense_Entries.class);
+            startActivity(goBack);
+            finish();
+        });
     }
 
-    public void onAdd(View view){
+    public void onAdd(){
         // Expense Category
         EditText categoryEditText = findViewById(R.id.edit_text_category);
         String category = categoryEditText.getText().toString();
@@ -43,7 +55,7 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         try(DbHandler dbHandler = new DbHandler(Activity2_1_Input_Expense_Entries.this)){
 
             dbHandler.addEntry(dbEntriesHandler);
-            Log.d("insert_entries", "data inserted sucessfully.");
+            Log.d("insert_entries", "data inserted successfully.");
             List<DbEntriesHandler> table_data = dbHandler.getAllEntries();    // getting all rows of the table in a list
 
             for (DbEntriesHandler exp : table_data) {   // reading all entries in list
