@@ -44,6 +44,7 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
 
     public void startExpenseEntries(View view){
         Intent intent = new Intent(this, Activity2_1_Input_Expense_Entries.class);
+        intent.putExtra("to-do", "add");
         startActivity(intent);
     }
 

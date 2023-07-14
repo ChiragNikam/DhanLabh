@@ -89,4 +89,26 @@ public class DbHandler extends SQLiteOpenHelper {
         return expense_table;
 
     }
+
+    // UPDATE Query
+    public int updateEntries(DbEntriesHandler exp){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DbParameters.COL_EXP_TYPE, exp.getExp_type());
+        values.put(DbParameters.COL_EXP_AMOUNT, exp.getExp_amount());
+        values.put(DbParameters.COL_EXP_DATE, exp.getExp_date());
+        Log.d("update_data", "Updating entries: id: " + exp.getId() + ", amount: " + exp.getExp_amount());
+        // updating here
+        return db.update(DbParameters.TAB_NAME, values, DbParameters.COL_ID + "=?",
+                new String[]{String.valueOf(exp.getId())});   // this function will return no of affected rows in table
+    }
+
+    // DELETE Query
+    public void deleteEntries(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String col_id = DbParameters.COL_ID;
+        db.delete(DbParameters.TAB_NAME, col_id + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
 }
