@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.dhanlabh.Data.DbHandler;
 import com.example.dhanlabh.Model.DbEntriesHandler;
 import java.util.List;
 
@@ -55,8 +59,16 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
         });
         holder.img_delete.setOnClickListener(view -> {
             DbEntriesHandler clickedEntry = entriesList.get(position);
+            DbHandler db = new DbHandler(view.getContext());
+            db.deleteEntries(clickedEntry.getId());
+            Toast.makeText(view.getContext(), "Entry Deleted Successfully", Toast.LENGTH_SHORT).show();
 
+            // Remove the item from the dataset
+            entriesList.remove(position);
 
+            // Notify the adapter about the removal
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, entriesList.size());
         });
     }
 

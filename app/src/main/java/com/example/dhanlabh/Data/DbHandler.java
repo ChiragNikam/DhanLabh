@@ -91,7 +91,7 @@ public class DbHandler extends SQLiteOpenHelper {
     }
 
     // UPDATE Query
-    public int updateEntries(DbEntriesHandler exp){
+    public void updateEntries(DbEntriesHandler exp){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -100,7 +100,7 @@ public class DbHandler extends SQLiteOpenHelper {
         values.put(DbParameters.COL_EXP_DATE, exp.getExp_date());
         Log.d("update_data", "Updating entries: id: " + exp.getId() + ", amount: " + exp.getExp_amount());
         // updating here
-        return db.update(DbParameters.TAB_NAME, values, DbParameters.COL_ID + "=?",
+        db.update(DbParameters.TAB_NAME, values, DbParameters.COL_ID + "=?",
                 new String[]{String.valueOf(exp.getId())});   // this function will return no of affected rows in table
     }
 
@@ -108,7 +108,8 @@ public class DbHandler extends SQLiteOpenHelper {
     public void deleteEntries(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String col_id = DbParameters.COL_ID;
-        db.delete(DbParameters.TAB_NAME, col_id + "=?", new String[]{String.valueOf(id)});
+        int affected_rows = db.delete(DbParameters.TAB_NAME, col_id + "=?", new String[]{String.valueOf(id)});
+        Log.d("delete_data", ""+affected_rows);
         db.close();
     }
 }

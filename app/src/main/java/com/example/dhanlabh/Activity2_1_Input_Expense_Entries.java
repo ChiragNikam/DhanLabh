@@ -26,11 +26,12 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         int id = 0;
         double amount = 0;
         String date = "";
-        if(to_do.equals("update")){
+        if(to_do.equals("update")){ // if intent to update, set data to the editText.
             category = getIntent().getStringExtra("type");
             id = getIntent().getIntExtra("id", 0);
             amount = getIntent().getDoubleExtra("amount", 0);
             date = getIntent().getStringExtra("date");
+
             btn_add = findViewById(R.id.btn_add_to_Database);
             btn_add.setText("Update");
             Log.d("insert_data", "category: " + category + ", amount: " + amount + ", date: " + date + ", id: " + id);
@@ -44,8 +45,6 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
             btn_add = findViewById(R.id.btn_add_to_Database);
         }
         int finalId = id;
-        double finalAmount = amount;
-        String finalCategory = category;
         String finalDate = date;
         btn_add.setOnClickListener(view -> {
                         if (btn_add.getText().toString().equalsIgnoreCase("add")){
