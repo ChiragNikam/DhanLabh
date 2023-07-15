@@ -27,7 +27,7 @@ public class DbHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
     // CREATE Operation
-        String create_table= "CREATE TABLE " + DbParameters.TAB_NAME + "( " +
+        String create_table= "CREATE TABLE " + DbParameters.TAB_EXP_RECORDS + "( " +
                 DbParameters.COL_ID + " INTEGER PRIMARY KEY, " +
                 DbParameters.COL_EXP_TYPE + " TEXT, " + DbParameters.COL_EXP_AMOUNT + " INTEGER, "
                 + DbParameters.COL_EXP_DATE+" TEXT )";
@@ -51,7 +51,7 @@ public class DbHandler extends SQLiteOpenHelper {
         content.put(DbParameters.COL_EXP_AMOUNT, exp.getExp_amount());
         content.put(DbParameters.COL_EXP_DATE, exp.getExp_date());
 
-        db.insert(DbParameters.TAB_NAME, null, content);    // inserting data to table
+        db.insert(DbParameters.TAB_EXP_RECORDS, null, content);    // inserting data to table
         db.close();
 
     }
@@ -63,7 +63,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String select_query = "SELECT * FROM " + DbParameters.TAB_NAME;
+        String select_query = "SELECT * FROM " + DbParameters.TAB_EXP_RECORDS;
         Cursor cursor = db.rawQuery(select_query, null);
 
         if(cursor.moveToFirst()){
@@ -100,7 +100,7 @@ public class DbHandler extends SQLiteOpenHelper {
         values.put(DbParameters.COL_EXP_DATE, exp.getExp_date());
         Log.d("update_data", "Updating entries: id: " + exp.getId() + ", amount: " + exp.getExp_amount());
         // updating here
-        db.update(DbParameters.TAB_NAME, values, DbParameters.COL_ID + "=?",
+        db.update(DbParameters.TAB_EXP_RECORDS, values, DbParameters.COL_ID + "=?",
                 new String[]{String.valueOf(exp.getId())});   // this function will return no of affected rows in table
     }
 
@@ -108,7 +108,7 @@ public class DbHandler extends SQLiteOpenHelper {
     public void deleteEntries(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String col_id = DbParameters.COL_ID;
-        int affected_rows = db.delete(DbParameters.TAB_NAME, col_id + "=?", new String[]{String.valueOf(id)});
+        int affected_rows = db.delete(DbParameters.TAB_EXP_RECORDS, col_id + "=?", new String[]{String.valueOf(id)});
         Log.d("delete_data", ""+affected_rows);
         db.close();
     }

@@ -1,8 +1,5 @@
 package com.example.dhanlabh;
-
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,7 +63,6 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
                 startActivity(goBack);
                 finish();
             });
-
     }
 
     public void onUpdate(int id, String date){

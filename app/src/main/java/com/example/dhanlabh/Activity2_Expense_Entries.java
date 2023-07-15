@@ -1,17 +1,13 @@
 package com.example.dhanlabh;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dhanlabh.Data.DbHandler;
 import com.example.dhanlabh.Model.DbEntriesHandler;
-
 import java.util.List;
 
 public class Activity2_Expense_Entries extends AppCompatActivity {
@@ -30,16 +26,15 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView1);
-        DbHandler expenseEntries = new DbHandler(this);
-        List<DbEntriesHandler> dataList = expenseEntries.getAllEntries();
-        // Add data to dataList
-        // ...
+        try(DbHandler expenseEntries = new DbHandler(this)) {
+            List<DbEntriesHandler> dataList = expenseEntries.getAllEntries();
+            // Add data to dataList
+            // ...
 
-        ExpenseHistoryAdapter adapter = new ExpenseHistoryAdapter(dataList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-
-
+            ExpenseHistoryAdapter adapter = new ExpenseHistoryAdapter(dataList);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     public void startExpenseEntries(View view){
@@ -56,5 +51,4 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         startActivity(intent);
         finish(); // Finish the current activity
     }
-
 }

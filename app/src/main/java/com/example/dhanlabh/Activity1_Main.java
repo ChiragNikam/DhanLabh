@@ -18,6 +18,3 @@ public class Activity1_Main extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
-
-

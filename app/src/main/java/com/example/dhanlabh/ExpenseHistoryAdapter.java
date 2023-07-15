@@ -1,16 +1,15 @@
 package com.example.dhanlabh;
-
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dhanlabh.Data.DbHandler;
 import com.example.dhanlabh.Model.DbEntriesHandler;
 import java.util.List;
@@ -59,16 +58,32 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
         });
         holder.img_delete.setOnClickListener(view -> {
             DbEntriesHandler clickedEntry = entriesList.get(position);
-            DbHandler db = new DbHandler(view.getContext());
-            db.deleteEntries(clickedEntry.getId());
-            Toast.makeText(view.getContext(), "Entry Deleted Successfully", Toast.LENGTH_SHORT).show();
 
-            // Remove the item from the dataset
-            entriesList.remove(position);
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setView(R.layout.dialog_confirm_delete);
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
-            // Notify the adapter about the removal
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, entriesList.size());
+            Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+            Button btnDelete = dialog.findViewById(R.id.btn_delete);
+
+            btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+            btnDelete.setOnClickListener(v -> {
+                // Delete the entry from the database
+                try (DbHandler db = new DbHandler(view.getContext())) {
+                    db.deleteEntries(clickedEntry.getId());
+                    Toast.makeText(view.getContext(), "Entry Deleted Successfully", Toast.LENGTH_SHORT).show();
+                }
+                // Remove the item from the dataset
+                entriesList.remove(position);
+
+                // Notify the adapter about the removal
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, entriesList.size());
+
+                dialog.dismiss();
+            });
         });
     }
 
@@ -93,6 +108,4 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
             img_delete = itemView.findViewById(R.id.btn_delete);
         }
     }
-
-
 }
