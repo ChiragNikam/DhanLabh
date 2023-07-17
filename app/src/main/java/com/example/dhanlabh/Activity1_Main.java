@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Activity1_Main extends AppCompatActivity {
     ImageView image_sip, image_finance, image_save_money;
     TextView txt_sip, txt_finance, txt_save_money;
+    Button btn_expenses_and_history, btn_your_spending, btn_your_budget;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +53,23 @@ public class Activity1_Main extends AppCompatActivity {
         txt_save_money.setOnClickListener(v -> {
             openLinkInBrowser("https://www.thebalancemoney.com/the-complete-beginner-s-guide-to-saving-money-358065");
         });
+
+        // setting buttons
+        btn_expenses_and_history = findViewById(R.id.btn_Expenses_History);
+        btn_your_spending = findViewById(R.id.btn_Your_Spendings);
+        btn_your_budget = findViewById(R.id.btn_Your_Budgets);
+
+        btn_expenses_and_history.setOnClickListener(v -> {
+            gotoExpenseEntries();
+        });
     }
-    public void gotoExpenseEntries(View view){ // directing to 2nd activity for Income and Expense
+    public void gotoExpenseEntries(){ // directing to 2nd activity for Income and Expense
         Intent intent = new Intent(this, Activity2_Expense_Entries.class);
         startActivity(intent);
     }
+    public void showCategories(){
 
+    }
     public void openLinkInBrowser(String url){ // explecit intent
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));

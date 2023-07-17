@@ -17,4 +17,6 @@ public class DbParameters {
     public static final String COL_EXP_DATE = "exp_date";
 
     // Columns and Keys of Table - expense_category;
+    public static final String CATEGORY_COL_EXP_CATEGORIES = "exp_category";
+    public static final String CATEGORY_COL_CATEGORY_DESCRIPTION = "category_description";
 }

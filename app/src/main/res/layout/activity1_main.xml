@@ -33,7 +33,6 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/green_button"
-                android:onClick="gotoExpenseEntries"
                 android:text="Expenses and History"
                 android:textColor="@color/white"
                 android:textStyle="bold|italic"
@@ -43,18 +42,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
             <Button
-                android:id="@+id/btn_Set_Track_Goals"
+                android:id="@+id/btn_Your_Spendings"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/green_button"
-                android:text="Track and Set Goals"
+                android:text="Your Spendings"
                 android:textColor="@color/white"
                 android:textStyle="bold|italic"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.49"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_Your_Budgets" />
+                app:layout_constraintEnd_toEndOf="@+id/btn_Your_Budgets"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/btn_Your_Budgets"
+                app:layout_constraintTop_toBottomOf="@+id/btn_Expenses_History" />
+
 
             <Button
                 android:id="@+id/btn_Your_Budgets"
@@ -71,18 +71,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_Your_Spendings" />
 
             <Button
-                android:id="@+id/btn_Your_Spendings"
+                android:id="@+id/btn_Set_Track_Goals"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/green_button"
-                android:text="Your Spendings"
+                android:text="Track and Set Goals"
                 android:textColor="@color/white"
                 android:textStyle="bold|italic"
-                app:layout_constraintEnd_toEndOf="@+id/btn_Your_Budgets"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btn_Your_Budgets"
-                app:layout_constraintTop_toBottomOf="@+id/btn_Expenses_History" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_Your_Budgets" />
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

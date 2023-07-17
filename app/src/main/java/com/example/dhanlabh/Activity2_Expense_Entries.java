@@ -6,7 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.dhanlabh.Data.DbHandler;
+import com.example.dhanlabh.Data.ExpensesDbHandler;
 import com.example.dhanlabh.Model.DbEntriesHandler;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView1);
-        try(DbHandler expenseEntries = new DbHandler(this)) {
+        try(ExpensesDbHandler expenseEntries = new ExpensesDbHandler(this)) {
             List<DbEntriesHandler> dataList = expenseEntries.getAllEntries();
             // Add data to dataList
             // ...

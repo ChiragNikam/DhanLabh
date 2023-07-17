@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.dhanlabh.Data.DbHandler;
+import com.example.dhanlabh.Data.ExpensesDbHandler;
 import com.example.dhanlabh.Model.DbEntriesHandler;
 import java.util.Calendar;
 import java.util.List;
@@ -77,7 +77,7 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         updated_data.setExp_date(date);
 
         // Setting data to table/database
-        try(DbHandler update_record = new DbHandler(this)){
+        try(ExpensesDbHandler update_record = new ExpensesDbHandler(this)){
             update_record.updateEntries(updated_data);
         }
     }
@@ -110,7 +110,7 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         dbEntriesHandler.setExp_amount(amount);
         dbEntriesHandler.setExp_date(currentDate);
 
-        try (DbHandler dbHandler = new DbHandler(Activity2_1_Input_Expense_Entries.this)) {
+        try (ExpensesDbHandler dbHandler = new ExpensesDbHandler(Activity2_1_Input_Expense_Entries.this)) {
             dbHandler.addEntry(dbEntriesHandler);
             Log.d("insert_entries", "data inserted successfully.");
             List<DbEntriesHandler> table_data = dbHandler.getAllEntries();    // getting all rows of the table in a list

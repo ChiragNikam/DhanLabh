@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DbHandler extends SQLiteOpenHelper {
-    public DbHandler(Context context){
+public class ExpensesDbHandler extends SQLiteOpenHelper {
+    public ExpensesDbHandler(Context context){
         super(context, DbParameters.DB_NAME, null, DbParameters.DB_VERSION);
     }
 
@@ -43,7 +43,6 @@ public class DbHandler extends SQLiteOpenHelper {
 
     // INSERT Operation
     public void addEntry(DbEntriesHandler exp){
-
         SQLiteDatabase db = this.getWritableDatabase(); // getting a writable database to perform operations
 
         ContentValues content = new ContentValues();
@@ -53,12 +52,10 @@ public class DbHandler extends SQLiteOpenHelper {
 
         db.insert(DbParameters.TAB_EXP_RECORDS, null, content);    // inserting data to table
         db.close();
-
     }
 
     // READ Operation
     public List<DbEntriesHandler> getAllEntries(){
-
         List<DbEntriesHandler> expense_table = new ArrayList<>(); // creating a list to store data of a table in it
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -87,7 +84,6 @@ public class DbHandler extends SQLiteOpenHelper {
         Collections.reverse(expense_table); // to reverse list, so that the latest added entry should get at top of the recycler view
 
         return expense_table;
-
     }
 
     // UPDATE Query
