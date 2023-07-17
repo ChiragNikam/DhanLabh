@@ -2,8 +2,10 @@ package com.example.dhanlabh;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dhanlabh.Data.CategoryDbHandler;
+import com.example.dhanlabh.Model.DbCategoriesHandler;
 
 public class Activity1_Main extends AppCompatActivity {
     ImageView image_sip, image_finance, image_save_money;
@@ -62,12 +67,20 @@ public class Activity1_Main extends AppCompatActivity {
         btn_expenses_and_history.setOnClickListener(v -> {
             gotoExpenseEntries();
         });
+        btn_your_spending.setOnClickListener(v -> {
+            showCategories();
+        });
     }
     public void gotoExpenseEntries(){ // directing to 2nd activity for Income and Expense
         Intent intent = new Intent(this, Activity2_Expense_Entries.class);
         startActivity(intent);
     }
     public void showCategories(){
+        try(CategoryDbHandler dbHandler = new CategoryDbHandler(Activity1_Main.this)){
+            dbHandler.getAllCategories();
+        } catch (Exception e) {
+            Log.d("insert", " " + e.getMessage());
+        }
 
     }
     public void openLinkInBrowser(String url){ // explecit intent

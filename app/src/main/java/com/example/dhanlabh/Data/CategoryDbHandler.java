@@ -15,14 +15,19 @@ import java.util.List;
 public class CategoryDbHandler extends SQLiteOpenHelper{
     public CategoryDbHandler(Context context){
         super(context, DbParameters.DB_NAME, null, DbParameters.DB_VERSION);
+        Log.d("insert", "in category handler constructor");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String create_table_category = "CREATE TABLE " + DbParameters.TAB_CATEGORY +
-                            " ( " + DbParameters.CATEGORY_COL_EXP_CATEGORIES + " TEXT PRIMARY KEY, " + DbParameters.CATEGORY_COL_CATEGORY_DESCRIPTION +" TEXT) ";
+                " ( " + DbParameters.CATEGORY_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                DbParameters.CATEGORY_COL_EXP_CATEGORIES + " TEXT, " +
+                DbParameters.CATEGORY_COL_CATEGORY_DESCRIPTION +" TEXT) ";
+
         Log.d("create_table", "Category table created: " + create_table_category);
         db.execSQL(create_table_category);
+
         addCategories("Others", "Miscellaneous expenses");
         addCategories("Food and Dining", "Groceries, dairy products, restaurant bills, etc.");
         addCategories("Shopping", "Apparels shopping, Appliances shopping, etc.");
@@ -71,4 +76,5 @@ public class CategoryDbHandler extends SQLiteOpenHelper{
 
         return categories;
     }
+    
 }

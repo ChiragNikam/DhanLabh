@@ -34,11 +34,16 @@ public class ExpensesDbHandler extends SQLiteOpenHelper {
         Log.d("createTable", "table is created successfully " + create_table);
         sqLiteDatabase.execSQL(create_table);
 
+
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        // Drop the Category table if it exists
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DbParameters.TAB_EXP_RECORDS);
+        onCreate(sqLiteDatabase);
     }
 
     // INSERT Operation
