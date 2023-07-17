@@ -76,5 +76,5 @@ public class CategoryDbHandler extends SQLiteOpenHelper{
 
         return categories;
     }
-    
+
 }
