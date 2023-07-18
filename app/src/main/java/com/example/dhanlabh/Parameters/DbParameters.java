@@ -18,6 +18,6 @@ public class DbParameters {
 
     // Columns and Keys of Table - expense_category;
     public static final String CATEGORY_COL_ID = "category_id";
-    public static final String CATEGORY_COL_EXP_CATEGORIES = "exp_category";
+    public static final String CATEGORY_COL_CATEGORIES_NAME = "exp_category";
     public static final String CATEGORY_COL_CATEGORY_DESCRIPTION = "category_description";
 }

@@ -6,10 +6,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.dhanlabh.Data.ExpensesDbHandler;
-import com.example.dhanlabh.Model.DbEntriesHandler;
+import com.example.dhanlabh.a_Entities.ExpenseEntries;
+import com.example.dhanlabh.c_Database.ExpenseDb_helper;
 import java.util.Calendar;
-import java.util.List;
 
 public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
     Button btn_add, btn_cancel;
@@ -67,19 +66,14 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
 
     public void onUpdate(int id, String date){
         EditText categoryEditText = findViewById(R.id.edit_text_category);
+        String category = categoryEditText.getText().toString();
         EditText amountEditText = findViewById(R.id.edit_text_amount);
+        double amount = Double.parseDouble(amountEditText.getText().toString());
 
-        // Setting data to the object
-        DbEntriesHandler updated_data = new DbEntriesHandler();
-        updated_data.setId(id);
-        updated_data.setExp_amount(Double.parseDouble(amountEditText.getText().toString()));
-        updated_data.setExp_type(categoryEditText.getText().toString());
-        updated_data.setExp_date(date);
-
-        // Setting data to table/database
-        try(ExpensesDbHandler update_record = new ExpensesDbHandler(this)){
-            update_record.updateEntries(updated_data);
-        }
+        ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
+        expenseDb_helper.expenseEntries_dao().updateExpenseEntries(new ExpenseEntries(
+                id, category, amount, date
+        ));
     }
     public void onAdd() {
         // Expense Category
@@ -105,22 +99,9 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         String currentDate = day + "-" + month + "-" + year;
 
-        DbEntriesHandler dbEntriesHandler = new DbEntriesHandler();
-        dbEntriesHandler.setExp_type(category);
-        dbEntriesHandler.setExp_amount(amount);
-        dbEntriesHandler.setExp_date(currentDate);
-
-        try (ExpensesDbHandler dbHandler = new ExpensesDbHandler(Activity2_1_Input_Expense_Entries.this)) {
-            dbHandler.addEntry(dbEntriesHandler);
-            Log.d("insert_entries", "data inserted successfully.");
-            List<DbEntriesHandler> table_data = dbHandler.getAllEntries();    // getting all rows of the table in a list
-
-            for (DbEntriesHandler exp : table_data) {   // reading all entries in list
-                Log.d("insert_data", "id: " + exp.getId() + ", expense type: " + exp.getExp_type() + ", expense amount: " + exp.getExp_amount() + ", expense date: " + exp.getExp_date());
-            }
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Exception Occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+        ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
+        expenseDb_helper.expenseEntries_dao().insertExpenseEntries(new ExpenseEntries(
+                category, amount, currentDate
+        ));
     }
 }
