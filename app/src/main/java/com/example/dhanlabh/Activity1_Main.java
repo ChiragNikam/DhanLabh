@@ -2,8 +2,10 @@ package com.example.dhanlabh;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class Activity1_Main extends AppCompatActivity {
     ImageView image_sip, image_finance, image_save_money;
@@ -62,13 +65,18 @@ public class Activity1_Main extends AppCompatActivity {
         btn_expenses_and_history.setOnClickListener(v -> {
             gotoExpenseEntries();
         });
+        btn_your_spending.setOnClickListener(v -> {
+            showCategories();
+        });
     }
     public void gotoExpenseEntries(){ // directing to 2nd activity for Income and Expense
         Intent intent = new Intent(this, Activity2_Expense_Entries.class);
         startActivity(intent);
     }
     public void showCategories(){
-
+        Intent intent = new Intent(this, Activity3_YourSpendings.class);
+        intent.putExtra("to-do", "Categories");
+        startActivity(intent);
     }
     public void openLinkInBrowser(String url){ // explecit intent
         Intent intent = new Intent(Intent.ACTION_VIEW);

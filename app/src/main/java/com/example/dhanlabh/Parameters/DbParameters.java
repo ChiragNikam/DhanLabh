@@ -5,7 +5,7 @@
 package com.example.dhanlabh.Parameters;
 
 public class DbParameters {
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
     public static final String DB_NAME = "Expense_Management";
     public static final String TAB_EXP_RECORDS = "expense_records";
     public static final String TAB_CATEGORY = "expense_category";
@@ -17,6 +17,7 @@ public class DbParameters {
     public static final String COL_EXP_DATE = "exp_date";
 
     // Columns and Keys of Table - expense_category;
-    public static final String CATEGORY_COL_EXP_CATEGORIES = "exp_category";
+    public static final String CATEGORY_COL_ID = "category_id";
+    public static final String CATEGORY_COL_CATEGORIES_NAME = "exp_category";
     public static final String CATEGORY_COL_CATEGORY_DESCRIPTION = "category_description";
 }

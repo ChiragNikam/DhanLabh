@@ -6,8 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.dhanlabh.Data.ExpensesDbHandler;
-import com.example.dhanlabh.Model.DbEntriesHandler;
+
+import com.example.dhanlabh.a_Entities.ExpenseEntries;
+import com.example.dhanlabh.c_Database.ExpenseDb_helper;
+
+import java.util.Collections;
 import java.util.List;
 
 public class Activity2_Expense_Entries extends AppCompatActivity {
@@ -26,15 +29,16 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView1);
-        try(ExpensesDbHandler expenseEntries = new ExpensesDbHandler(this)) {
-            List<DbEntriesHandler> dataList = expenseEntries.getAllEntries();
-            // Add data to dataList
-            // ...
 
-            ExpenseHistoryAdapter adapter = new ExpenseHistoryAdapter(dataList);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(adapter);
-        }
+        ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
+        // Add data to dataList
+        List<ExpenseEntries> dataList = expenseDb_helper.expenseEntries_dao().getAllEntries();
+        Collections.reverse(dataList);
+
+        // Setting Expense Entries to the recycler view
+        ExpenseHistoryAdapter adapter = new ExpenseHistoryAdapter(dataList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
     public void startExpenseEntries(View view){
