@@ -5,7 +5,7 @@
 package com.example.dhanlabh.Parameters;
 
 public class DbParameters {
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 5;
     public static final String DB_NAME = "Expense_Management";
     public static final String TAB_EXP_RECORDS = "expense_records";
     public static final String TAB_CATEGORY = "expense_category";
