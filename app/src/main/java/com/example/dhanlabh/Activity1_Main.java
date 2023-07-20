@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dhanlabh.Data.CategoryDbHandler;
-import com.example.dhanlabh.Model.DbCategoriesHandler;
 
 public class Activity1_Main extends AppCompatActivity {
     ImageView image_sip, image_finance, image_save_money;
@@ -76,12 +74,9 @@ public class Activity1_Main extends AppCompatActivity {
         startActivity(intent);
     }
     public void showCategories(){
-        try(CategoryDbHandler dbHandler = new CategoryDbHandler(Activity1_Main.this)){
-            dbHandler.getAllCategories();
-        } catch (Exception e) {
-            Log.d("insert", " " + e.getMessage());
-        }
-
+        Intent intent = new Intent(this, Activity3_YourSpendings.class);
+        intent.putExtra("to-do", "Categories");
+        startActivity(intent);
     }
     public void openLinkInBrowser(String url){ // explecit intent
         Intent intent = new Intent(Intent.ACTION_VIEW);

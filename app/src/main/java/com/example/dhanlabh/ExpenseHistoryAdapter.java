@@ -10,14 +10,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.dhanlabh.Data.ExpensesDbHandler;
-import com.example.dhanlabh.Model.DbEntriesHandler;
+
+import com.example.dhanlabh.a_Entities.ExpenseEntries;
+import com.example.dhanlabh.c_Database.ExpenseDb_helper;
+
 import java.util.List;
 
 public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAdapter.ViewHolder> {
-    private final List<DbEntriesHandler> entriesList;
+    private final List<ExpenseEntries> entriesList;
 
-    public ExpenseHistoryAdapter(List<DbEntriesHandler> entriesList) {
+    public ExpenseHistoryAdapter(List<ExpenseEntries> entriesList) {
         this.entriesList = entriesList;
     }
 
@@ -31,7 +33,7 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DbEntriesHandler entry = entriesList.get(position);
+        ExpenseEntries entry = entriesList.get(position);
         // Set expense amount
         String amount_to_set = "\u20B9" + entry.getExp_amount();
         holder.txtAmount.setText(amount_to_set);
@@ -42,10 +44,10 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
         //Set expense date
         holder.txtDate.setText(entry.getExp_date());
 
-
+        // UPDATE operation to database on clicking Edit image
         holder.img_edit.setOnClickListener(view -> {
             // Get the clicked entry
-            DbEntriesHandler clickedEntry = entriesList.get(position);
+            ExpenseEntries clickedEntry = entriesList.get(position);
 
             // Start Activity2_1_Input_Expense_Entries and pass the clicked entry
             Intent intent = new Intent(view.getContext(), Activity2_1_Input_Expense_Entries.class);
@@ -56,8 +58,9 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
             intent.putExtra("date", clickedEntry.getExp_date());
             view.getContext().startActivity(intent);
         });
+        // DELETE operation to database on clicking Delete image
         holder.img_delete.setOnClickListener(view -> {
-            DbEntriesHandler clickedEntry = entriesList.get(position);
+            ExpenseEntries clickedEntry = entriesList.get(position);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
             builder.setView(R.layout.dialog_confirm_delete);
@@ -71,10 +74,9 @@ public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAd
 
             btnDelete.setOnClickListener(v -> {
                 // Delete the entry from the database
-                try (ExpensesDbHandler db = new ExpensesDbHandler(view.getContext())) {
-                    db.deleteEntries(clickedEntry.getId());
-                    Toast.makeText(view.getContext(), "Entry Deleted Successfully", Toast.LENGTH_SHORT).show();
-                }
+                ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(builder.getContext());
+                expenseDb_helper.expenseEntries_dao().deleteExpenseEntries(clickedEntry);
+
                 // Remove the item from the dataset
                 entriesList.remove(position);
 
