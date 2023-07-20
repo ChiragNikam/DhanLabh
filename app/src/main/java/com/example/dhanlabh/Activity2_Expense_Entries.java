@@ -6,10 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dhanlabh.a_Entities.ExpenseEntries;
 import com.example.dhanlabh.c_Database.ExpenseDb_helper;
-
 import java.util.Collections;
 import java.util.List;
 

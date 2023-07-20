@@ -1,10 +1,13 @@
 package com.example.dhanlabh;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.dhanlabh.a_Entities.ExpenseEntries;
 import com.example.dhanlabh.c_Database.ExpenseDb_helper;
@@ -12,6 +15,7 @@ import java.util.Calendar;
 
 public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
     Button btn_add, btn_cancel;
+    TextView textView_Category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,13 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         int id = 0;
         double amount = 0;
         String date = "";
+
+        if(to_do.equals("category")){
+            category = getIntent().getStringExtra("category_name");
+            textView_Category = findViewById(R.id.txtView_categoryName);
+            textView_Category.setText(category);
+        }
+
         if(to_do.equals("update")){ // if intent to update, set data to the editText.
             category = getIntent().getStringExtra("type");
             id = getIntent().getIntExtra("id", 0);
@@ -32,8 +43,8 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
             btn_add.setText("Update");
             Log.d("insert_data", "category: " + category + ", amount: " + amount + ", date: " + date + ", id: " + id);
 
-            EditText etCategory = findViewById(R.id.edit_text_category);
-            etCategory.setText(category);
+            textView_Category = findViewById(R.id.txtView_categoryName);
+            textView_Category.setText(category);
 
             EditText etAmount = findViewById(R.id.edit_text_amount);
             etAmount.setText(String.valueOf(amount));
@@ -52,38 +63,42 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
                     Intent intent = new Intent(this, Activity2_Expense_Entries.class);
                     startActivity(intent);
                     finish();
-                    }
-            );
+        });
 
-            // Action over CANCEL button
-            btn_cancel = findViewById(R.id.btn_cancel);
-            btn_cancel.setOnClickListener(view -> {
-                Intent goBack = new Intent(Activity2_1_Input_Expense_Entries.this, Activity2_Expense_Entries.class);
-                startActivity(goBack);
-                finish();
-            });
+        // Action over CANCEL button
+        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_cancel.setOnClickListener(view -> {
+            Intent goBack = new Intent(Activity2_1_Input_Expense_Entries.this, Activity2_Expense_Entries.class);
+            startActivity(goBack);
+            finish();
+        });
+
+        LinearLayoutCompat lstCategories = findViewById(R.id.lst_category);
+        lstCategories.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Activity3_YourSpendings.class);
+            intent.putExtra("category", "chose category");
+            startActivity(intent);
+        });
+
     }
 
     public void onUpdate(int id, String date){
-        EditText categoryEditText = findViewById(R.id.edit_text_category);
+        TextView categoryEditText = findViewById(R.id.txtView_categoryName);
         String category = categoryEditText.getText().toString();
         EditText amountEditText = findViewById(R.id.edit_text_amount);
         double amount = Double.parseDouble(amountEditText.getText().toString());
 
-        ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
+         ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
         expenseDb_helper.expenseEntries_dao().updateExpenseEntries(new ExpenseEntries(
                 id, category, amount, date
         ));
     }
     public void onAdd() {
         // Expense Category
-        EditText categoryEditText = findViewById(R.id.edit_text_category);
+        textView_Category = findViewById(R.id.txtView_categoryName);
         String category = null;
-        if (!categoryEditText.getText().toString().equals("")) {
-            category = categoryEditText.getText().toString();
-        } else {
-            Toast.makeText(this, "Please mention Expense Category", Toast.LENGTH_SHORT).show();
-        }
+            category = textView_Category.getText().toString();
+
         // Expense Amount
         EditText amountEditText = findViewById(R.id.edit_text_amount);
         double amount = 0;

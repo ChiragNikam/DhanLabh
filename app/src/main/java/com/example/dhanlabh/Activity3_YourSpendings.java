@@ -1,9 +1,11 @@
 package com.example.dhanlabh;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,19 +20,24 @@ public class Activity3_YourSpendings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity3_your_spendings);
-        String intent = getIntent().toString();
-        Log.d("intent", intent);
+        String intent_str = getIntent().getStringExtra("from_activity1");
+        Log.d("intent", "" + intent_str);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         RecyclerView categoryRecycler = findViewById(R.id.recyclerCategories);
 
         ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
-
-        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
-                "Others", "Miscellaneous expenses"));
-        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
-                "Food and Dining", "Groceries, dairy products, restaurant bills, etc."));
-        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
-                "Shopping", "Apparels shopping, Appliances shopping, etc."));
+//
+//        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+//                "Others", "Miscellaneous expenses"));
+//        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+//                "Food and Dining", "Groceries, dairy products, restaurant bills, etc."));
+//        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+//                "Shopping", "Apparels shopping, Appliances shopping, etc."));
 
         List<ExpenseCategories> categoriesList = expenseDb_helper.categories_dao().getAllCategories();
         Log.d("database", "performed insertion");
