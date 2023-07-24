@@ -28,9 +28,12 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         String date = "";
 
         if(to_do.equals("category")){
+            EditText txt_cat = findViewById(R.id.edit_text_amount);
             category = getIntent().getStringExtra("category_name");
+            String saved_amount = getIntent().getStringExtra("saved_amount");
             textView_Category = findViewById(R.id.txtView_categoryName);
             textView_Category.setText(category);
+            txt_cat.setText(saved_amount);
         }
 
         if(to_do.equals("update")){ // if intent to update, set data to the editText.
@@ -75,8 +78,10 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
 
         LinearLayoutCompat lstCategories = findViewById(R.id.lst_category);
         lstCategories.setOnClickListener(v -> {
+            EditText txt_amount = findViewById(R.id.edit_text_amount);
             Intent intent = new Intent(this, Activity3_YourSpendings.class);
             intent.putExtra("category", "chose category");
+            intent.putExtra("saved_amount", txt_amount.getText().toString());
             startActivity(intent);
         });
 
@@ -107,6 +112,7 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Please mention Expense Amount", Toast.LENGTH_SHORT).show();
         }
+
         // Expense Date
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);

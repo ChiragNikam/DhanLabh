@@ -22,6 +22,7 @@ public class Activity3_YourSpendings extends AppCompatActivity {
         setContentView(R.layout.activity3_your_spendings);
 
         String intent_str = getIntent().getStringExtra("from_activity1");
+        String saved_amount = getIntent().getStringExtra("saved_amount");
         Log.d("intent", "" + intent_str);
 
         ActionBar actionBar = getSupportActionBar();
@@ -46,7 +47,7 @@ public class Activity3_YourSpendings extends AppCompatActivity {
         Log.d("database", "deleting categories");
 
 
-        CategoriesAdapter adapter = new CategoriesAdapter(categoriesList);
+        CategoriesAdapter adapter = new CategoriesAdapter(categoriesList, saved_amount);
         categoryRecycler.setLayoutManager(new LinearLayoutManager(this));
         categoryRecycler.setAdapter(adapter);
         Log.d("database", "categories");
