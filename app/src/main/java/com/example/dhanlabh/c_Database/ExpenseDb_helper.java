@@ -31,30 +31,6 @@ public abstract class ExpenseDb_helper extends RoomDatabase {
         return instance;
     }
 
-    RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-        public void onCreate (SupportSQLiteDatabase db) {
-            categories_dao().insertExpenseCategories(new ExpenseCategories(
-                    "Others", "Miscellaneous expenses"));
-            categories_dao().insertExpenseCategories(new ExpenseCategories(
-                    "Food and Dining", "Groceries, dairy products, restaurant bills, etc."));
-            categories_dao().insertExpenseCategories(new ExpenseCategories(
-                    "Shopping", "Apparels shopping, Appliances shopping, etc."));
-        }
-        public void onOpen (SupportSQLiteDatabase db) {
-            // do something every time database is open
-        }
-    };
-
-    public static boolean areCategoriesInserted(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        return prefs.getBoolean(KEY_CATEGORIES_INSERTED, false);
-    }
-
-    public static void setCategoriesInserted(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        prefs.edit().putBoolean(KEY_CATEGORIES_INSERTED, true).apply();
-    }
-
     public abstract ExpenseEntries_DAO expenseEntries_dao();
 
     public abstract Categories_DAO categories_dao();

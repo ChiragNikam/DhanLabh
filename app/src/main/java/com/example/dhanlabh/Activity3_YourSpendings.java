@@ -34,19 +34,19 @@ public class Activity3_YourSpendings extends AppCompatActivity {
 
         ExpenseDb_helper expenseDb_helper = ExpenseDb_helper.getDb(this);
 
-//        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
-//                "Others", "Miscellaneous expenses"));
-//        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
-//                "Food and Dining", "Groceries, dairy products, restaurant bills, etc."));
-//        expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
-//                "Shopping", "Apparels shopping, Appliances shopping, etc."));
-
         List<ExpenseCategories> categoriesList = expenseDb_helper.categories_dao().getAllCategories();
-        Log.d("database", "performed insertion");
+        // inserting categories only if the table is empty and just created
+        if(categoriesList.isEmpty()) {
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Others", "Miscellaneous expenses"));
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Food and Dining", "Groceries, dairy products, restaurant bills, etc."));
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Shopping", "Apparels shopping, Appliances shopping, etc."));
+            Log.d("database", "performed insertion");
+        }
 
-        Log.d("database", "deleting categories");
-
-
+        categoriesList = expenseDb_helper.categories_dao().getAllCategories();
         CategoriesAdapter adapter = new CategoriesAdapter(categoriesList, saved_amount);
         categoryRecycler.setLayoutManager(new LinearLayoutManager(this));
         categoryRecycler.setAdapter(adapter);
