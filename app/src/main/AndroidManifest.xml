@@ -12,7 +12,7 @@
         android:theme="@style/Theme.DhanLabh"
         tools:targetApi="31">
         <activity
-            android:name=".Activity3_YourSpendings"
+            android:name=".Activity3_ExpCategories"
             android:exported="false"
             android:parentActivityName=".Activity2_1_Input_Expense_Entries"/>
         <activity

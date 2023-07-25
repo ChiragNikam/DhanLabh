@@ -79,7 +79,7 @@ public class Activity2_1_Input_Expense_Entries extends AppCompatActivity {
         LinearLayoutCompat lstCategories = findViewById(R.id.lst_category);
         lstCategories.setOnClickListener(v -> {
             EditText txt_amount = findViewById(R.id.edit_text_amount);
-            Intent intent = new Intent(this, Activity3_YourSpendings.class);
+            Intent intent = new Intent(this, Activity3_ExpCategories.class);
             intent.putExtra("category", "chose category");
             intent.putExtra("saved_amount", txt_amount.getText().toString());
             startActivity(intent);

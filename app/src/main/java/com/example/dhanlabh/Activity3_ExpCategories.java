@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,7 +13,7 @@ import com.example.dhanlabh.c_Database.ExpenseDb_helper;
 
 import java.util.List;
 
-public class Activity3_YourSpendings extends AppCompatActivity {
+public class Activity3_ExpCategories extends AppCompatActivity {
     public static boolean isInitialInsertionDone = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
