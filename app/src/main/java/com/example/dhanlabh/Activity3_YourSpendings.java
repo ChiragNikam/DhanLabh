@@ -43,6 +43,14 @@ public class Activity3_YourSpendings extends AppCompatActivity {
                     "Food and Dining", "Groceries, dairy products, restaurant bills, etc."));
             expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
                     "Shopping", "Apparels shopping, Appliances shopping, etc."));
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Education", "Tuition fees, school fees, courses, etc."));
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Gifts and Donation", "Gifts, donations, birthdays, etc."));
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Medical", "Doctors bills, medical bills, etc."));
+            expenseDb_helper.categories_dao().insertExpenseCategories(new ExpenseCategories(
+                    "Investments", "Stocks, bonds, mutual funds, etc."));
             Log.d("database", "performed insertion");
         }
 
