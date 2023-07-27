@@ -45,7 +45,7 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override   // bug_fix - solution for bug - 16c12da
+    @Override
     public void onBackPressed() {
         // Start Activity1_Main when back button is pressed
         Intent intent = new Intent(this, Activity1_Main.class);

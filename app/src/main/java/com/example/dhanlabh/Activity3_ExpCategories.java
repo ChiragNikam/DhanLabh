@@ -18,7 +18,7 @@ public class Activity3_ExpCategories extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity3_your_spendings);
+        setContentView(R.layout.activity3_exp_categories);
 
         String intent_str = getIntent().getStringExtra("from_activity1");
         String saved_amount = getIntent().getStringExtra("saved_amount");

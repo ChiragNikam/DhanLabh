@@ -5,25 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".Activity3_ExpCategories">
+    tools:context=".Activity4_YourSpendings">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        app:layout_constraintTop_toTopOf="parent" >
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar3"
+            android:id="@+id/toolbar4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/darkgreen"
-            app:title="Your Spending's"
+            app:title="Budget Breakdown"
             app:titleTextColor="@color/white" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCategories"
+            android:id="@+id/recyclerCategory_dist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"

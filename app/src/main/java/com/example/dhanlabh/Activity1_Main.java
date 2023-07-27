@@ -31,37 +31,23 @@ public class Activity1_Main extends AppCompatActivity {
         txt_save_money = findViewById(R.id.txt_save_money);
 
         // opening article for SIP
-        image_sip.setOnClickListener(v -> {
-            openLinkInBrowser("https://expensesmanager.in/articles/lumpsum-vs-sip");
-        });
-        txt_sip.setOnClickListener(v -> {
-            openLinkInBrowser("https://expensesmanager.in/articles/lumpsum-vs-sip");
-        });
+        image_sip.setOnClickListener(v -> openLinkInBrowser("https://expensesmanager.in/articles/lumpsum-vs-sip"));
+        txt_sip.setOnClickListener(v -> openLinkInBrowser("https://expensesmanager.in/articles/lumpsum-vs-sip"));
 
         // opening article for Financial Health
-        image_finance.setOnClickListener(v -> {
-            openLinkInBrowser("https://www.investopedia.com/articles/personal-finance/111813/five-rules-improve-your-financial-health.asp");
-        });
-        txt_finance.setOnClickListener(v -> {
-            openLinkInBrowser("https://www.investopedia.com/articles/personal-finance/111813/five-rules-improve-your-financial-health.asp");
-        });
+        image_finance.setOnClickListener(v -> openLinkInBrowser("https://www.investopedia.com/articles/personal-finance/111813/five-rules-improve-your-financial-health.asp"));
+        txt_finance.setOnClickListener(v -> openLinkInBrowser("https://www.investopedia.com/articles/personal-finance/111813/five-rules-improve-your-financial-health.asp"));
 
         // opening article for Saving Money
-        image_save_money.setOnClickListener(v -> {
-            openLinkInBrowser("https://www.thebalancemoney.com/the-complete-beginner-s-guide-to-saving-money-358065");
-        });
-        txt_save_money.setOnClickListener(v -> {
-            openLinkInBrowser("https://www.thebalancemoney.com/the-complete-beginner-s-guide-to-saving-money-358065");
-        });
+        image_save_money.setOnClickListener(v -> openLinkInBrowser("https://www.thebalancemoney.com/the-complete-beginner-s-guide-to-saving-money-358065"));
+        txt_save_money.setOnClickListener(v -> openLinkInBrowser("https://www.thebalancemoney.com/the-complete-beginner-s-guide-to-saving-money-358065"));
 
         // setting buttons
         btn_expenses_and_history = findViewById(R.id.btn_Expenses_History);
         btn_your_spending = findViewById(R.id.btn_Your_Spendings);
         btn_your_budget = findViewById(R.id.btn_Your_Budgets);
 
-        btn_expenses_and_history.setOnClickListener(v -> {
-            gotoExpenseEntries();
-        });
+        btn_expenses_and_history.setOnClickListener(v -> gotoExpenseEntries());
         btn_your_spending.setOnClickListener(v -> showCategories());
     }
     public void gotoExpenseEntries(){ // directing to 2nd activity for Income and Expense
@@ -73,7 +59,7 @@ public class Activity1_Main extends AppCompatActivity {
         intent.putExtra("from_activity1", "Categories");
         startActivity(intent);
     }
-    public void openLinkInBrowser(String url){ // explecit intent
+    public void openLinkInBrowser(String url){ // explicit intent
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
 

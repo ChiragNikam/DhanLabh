@@ -101,6 +101,7 @@
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:layout_weight="0"
+                    android:contentDescription="SIP"
                     android:background="@drawable/sip"/>
                 <TextView
                     android:id="@+id/txt_sip"
@@ -124,6 +125,7 @@
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:layout_weight="0"
+                    android:contentDescription="Financial Health"
                     android:background="@drawable/improve_finance"/>
                 <TextView
                     android:id="@+id/txt_improve_finance"
@@ -148,6 +150,7 @@
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:layout_weight="0"
+                    android:contentDescription="Saving Money"
                     android:background="@drawable/save_money"/>
                 <TextView
                     android:id="@+id/txt_save_money"
