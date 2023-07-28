@@ -14,7 +14,6 @@ import com.example.dhanlabh.c_Database.ExpenseDb_helper;
 import java.util.List;
 
 public class Activity3_ExpCategories extends AppCompatActivity {
-    public static boolean isInitialInsertionDone = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +53,7 @@ public class Activity3_ExpCategories extends AppCompatActivity {
         }
 
         categoriesList = expenseDb_helper.categories_dao().getAllCategories();
-        CategoriesAdapter adapter = new CategoriesAdapter(categoriesList, saved_amount);
+        Adapter_Categories adapter = new Adapter_Categories(categoriesList, saved_amount);
         categoryRecycler.setLayoutManager(new LinearLayoutManager(this));
         categoryRecycler.setAdapter(adapter);
         Log.d("database", "categories");

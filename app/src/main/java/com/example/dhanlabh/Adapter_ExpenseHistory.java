@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,10 +16,10 @@ import com.example.dhanlabh.c_Database.ExpenseDb_helper;
 
 import java.util.List;
 
-public class ExpenseHistoryAdapter extends RecyclerView.Adapter<ExpenseHistoryAdapter.ViewHolder> {
+public class Adapter_ExpenseHistory extends RecyclerView.Adapter<Adapter_ExpenseHistory.ViewHolder> {
     private final List<ExpenseEntries> entriesList;
 
-    public ExpenseHistoryAdapter(List<ExpenseEntries> entriesList) {
+    public Adapter_ExpenseHistory(List<ExpenseEntries> entriesList) {
         this.entriesList = entriesList;
     }
 

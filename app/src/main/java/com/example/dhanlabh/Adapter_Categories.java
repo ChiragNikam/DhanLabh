@@ -13,10 +13,10 @@ import com.example.dhanlabh.a_Entities.ExpenseCategories;
 
 import java.util.List;
 
-public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
+public class Adapter_Categories extends RecyclerView.Adapter<Adapter_Categories.ViewHolder> {
     List<ExpenseCategories> categoryList;
     String saved_amount;
-    public CategoriesAdapter(List<ExpenseCategories> categoryList, String saved_amount){
+    public Adapter_Categories(List<ExpenseCategories> categoryList, String saved_amount){
         this.categoryList = categoryList;
         this.saved_amount = saved_amount;
     }

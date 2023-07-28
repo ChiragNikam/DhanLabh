@@ -48,15 +48,15 @@ public class Activity1_Main extends AppCompatActivity {
         btn_your_budget = findViewById(R.id.btn_Your_Budgets);
 
         btn_expenses_and_history.setOnClickListener(v -> gotoExpenseEntries());
-        btn_your_spending.setOnClickListener(v -> showCategories());
+        btn_your_spending.setOnClickListener(v -> gotoYourSpendings());
     }
     public void gotoExpenseEntries(){ // directing to 2nd activity for Income and Expense
         Intent intent = new Intent(this, Activity2_Expense_Entries.class);
         startActivity(intent);
     }
-    public void showCategories(){
-        Intent intent = new Intent(this, Activity3_ExpCategories.class);
-        intent.putExtra("from_activity1", "Categories");
+    public void gotoYourSpendings(){
+        Intent intent = new Intent(this, Activity4_YourSpendings.class);
+//        intent.putExtra("from_activity1", "Categories");
         startActivity(intent);
     }
     public void openLinkInBrowser(String url){ // explicit intent

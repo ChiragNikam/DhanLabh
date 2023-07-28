@@ -34,7 +34,7 @@ public class Activity2_Expense_Entries extends AppCompatActivity {
         Collections.reverse(dataList);
 
         // Setting Expense Entries to the recycler view
-        ExpenseHistoryAdapter adapter = new ExpenseHistoryAdapter(dataList);
+        Adapter_ExpenseHistory adapter = new Adapter_ExpenseHistory(dataList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
