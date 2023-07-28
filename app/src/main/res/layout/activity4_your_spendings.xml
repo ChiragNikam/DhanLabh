@@ -51,7 +51,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:text="Category-wise-spending"
-                    android:textStyle="bold" />
+                    style="@style/MaterialAlertDialog.Material3.Title.Icon" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerCategoriesDist"
@@ -63,15 +63,6 @@
                     android:layout_marginBottom="10dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-            <!--            <View-->
-            <!--                android:layout_width="370dp"-->
-            <!--                android:layout_height="400dp"-->
-            <!--                android:layout_gravity="center_horizontal"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:background="@drawable/rownded_corners_all"-->
-            <!--                android:outlineAmbientShadowColor="@color/black" -->
-            <!--                android:outlineSpotShadowColor="@color/gray">-->
-            <!--            </View>-->
         </androidx.core.widget.NestedScrollView>
 
     </com.google.android.material.appbar.AppBarLayout>

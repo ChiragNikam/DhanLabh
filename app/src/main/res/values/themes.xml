@@ -3,6 +3,9 @@
     <style name="Base.Theme.DhanLabh" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/darkgreen</item>
+        <item name="colorPrimaryDark">@color/darkgreen</item>
+        <item name="colorPrimaryVariant">@color/darkgreen</item>
     </style>
     <style name="Theme.DhanLabh" parent="Base.Theme.DhanLabh" />
 </resources>
