@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import com.example.dhanlabh.a_Entities.ExpenseCategories;
 import com.example.dhanlabh.a_Entities.ExpenseEntries;
 import com.example.dhanlabh.c_Database.ExpenseDb_helper;
@@ -32,10 +34,15 @@ public class Activity4_YourSpendings extends AppCompatActivity {
         List<ExpenseCategories> category_types = categories.categories_dao().getAllCategories();
         List<CategoryWiseDestribution> dist_categories = new ArrayList<>();
         for(ExpenseCategories cat_type : category_types){
-            CategoryWiseDestribution dist_cat = new CategoryWiseDestribution();
-            dist_cat.setAmount(getAmountByCategories(entries, cat_type.getCategory_name()));
-            dist_cat.setCategory(cat_type.getCategory_name());
+            CategoryWiseDestribution dist_cat = new CategoryWiseDestribution(cat_type.getCategory_name(),
+                                                    getAmountByCategories(entries, cat_type.getCategory_name()));
             dist_categories.add(dist_cat);
+        }
+        for(int i = 0; i < dist_categories.size(); i++){
+            CategoryWiseDestribution categoryDestri = dist_categories.get(i);
+            if(categoryDestri.getAmount() == 0.0){
+                dist_categories.remove(i);
+            }
         }
         RecyclerView recyclerCategory = findViewById(R.id.recyclerCategoriesDist);
         Adapter_CategoriesDestri categoriesDestri = new Adapter_CategoriesDestri(dist_categories);

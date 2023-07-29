@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="60dp"
     android:padding="5dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -13,25 +13,23 @@
         android:orientation="horizontal"
         android:outlineSpotShadowColor="@color/gray"
         android:paddingStart="10dp"
-        android:paddingEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <TextView
-            android:id="@+id/txt_category"
-            android:layout_width="330dp"
+            android:id="@+id/txt_category_dest"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Category"
             android:textSize="19sp"
             android:layout_gravity="center_vertical"/>
         <TextView
             android:id="@+id/txt_total_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="00"
             android:textSize="19sp"
             android:layout_gravity="center_vertical"
+            android:gravity="end"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

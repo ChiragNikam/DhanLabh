@@ -1,5 +1,7 @@
 package com.example.dhanlabh;
 
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class Adapter_CategoriesDestri extends RecyclerView.Adapter<Adapter_CategoriesDestri.ViewHolder> {
-    List<CategoryWiseDestribution> categoryWiseDestributionList;
-    public Adapter_CategoriesDestri(List<CategoryWiseDestribution> categoryList){
-        this.categoryWiseDestributionList = categoryList;
+    private final List<CategoryWiseDestribution> categoryWiseDestributionList;
+    public Adapter_CategoriesDestri(List<CategoryWiseDestribution> categoryWiseDestributionList){
+        this.categoryWiseDestributionList = categoryWiseDestributionList;
     }
 
     @NonNull
@@ -26,13 +28,17 @@ public class Adapter_CategoriesDestri extends RecyclerView.Adapter<Adapter_Categ
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CategoryWiseDestribution category = categoryWiseDestributionList.get(position);
 
-        holder.txt_categoryName.setText(category.getCategory());
-        holder.txt_totalCategoryAmount.setText((int) category.getAmount());
+        if(category.getAmount() > 0.0) {
+            holder.txt_categoryName.setText(category.getCategory());
+            String amount = "₹" + category.getAmount();
+            holder.txt_totalCategoryAmount.setGravity(Gravity.END);
+            holder.txt_totalCategoryAmount.setText(amount);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return categoryWiseDestributionList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -41,7 +47,7 @@ public class Adapter_CategoriesDestri extends RecyclerView.Adapter<Adapter_Categ
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txt_categoryName = itemView.findViewById(R.id.txt_category);
+            txt_categoryName = itemView.findViewById(R.id.txt_category_dest);
             txt_totalCategoryAmount = itemView.findViewById(R.id.txt_total_amount);
         }
     }
